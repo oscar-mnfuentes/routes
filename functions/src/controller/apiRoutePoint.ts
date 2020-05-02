@@ -4,26 +4,18 @@ import { QuerySnapshot, DocumentReference, GeoPoint } from "@google-cloud/firest
 import { firestore } from ".."
 import { DocumentSnapshot } from "firebase-functions/lib/providers/firestore"
 import { RoutePoint } from "../interfaces/RoutePoint"
+import { RoutePointServiceImpl } from "../service/impl/routePointServiceImpl"
 
 export const apiRoutePoint = express()
 const COLLECTION_ROUTE_POINTS = "route-points"
 
 apiRoutePoint.use(cors({ origin: true }))
 
-apiRoutePoint.get("/route-point", async (request, response) => {
-  const result: QuerySnapshot = await firestore.collection(COLLECTION_ROUTE_POINTS).get()
-  const routePoints: RoutePoint[] = []
-  result.forEach((doc) => {
-    routePoints.push({
-      id: doc.id,
-      idRoute: doc.data().idRoute,
-      name: doc.data().name,
-      description: doc.data().description,
-      picture: doc.data().picture,
-      position: doc.data().position,
-    })
-  })
-  response.status(200).send(routePoints)
+apiRoutePoint.get("/route/:idRoute/point", async (request, response) => {
+  const idRoute = request.params.idRoute
+  const routePointService = new RoutePointServiceImpl()
+  const points = await routePointService.getRoutePointsByRoute(idRoute)
+  response.status(200).send(points)
 })
 
 apiRoutePoint.get("/route-point/:id", async (request, response) => {
@@ -35,7 +27,7 @@ apiRoutePoint.get("/route-point/:id", async (request, response) => {
     name: result.data().name,
     description: result.data().description,
     picture: result.data().picture,
-    position: result.data().position,
+    position: result.data().position
   }
   response.status(200).send(routePoint)
 })
