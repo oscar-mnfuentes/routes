@@ -2,5 +2,6 @@
     "tslintIntegration": true,
     "semi": false,
     "printWidth": 120,
-    "singleQuote": false
+    "singleQuote": false,
+    "trailingComma": "none"
 }
