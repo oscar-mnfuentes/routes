@@ -1,9 +1,9 @@
 import * as express from "express"
 import * as cors from "cors"
 import { QuerySnapshot, DocumentReference, GeoPoint } from "@google-cloud/firestore"
-import { firestore } from "."
+import { firestore } from ".."
 import { DocumentSnapshot } from "firebase-functions/lib/providers/firestore"
-import { RoutePoint } from "./interfaces/RoutePoint"
+import { RoutePoint } from "../interfaces/RoutePoint"
 
 export const apiRoutePoint = express()
 const COLLECTION_ROUTE_POINTS = "route-points"

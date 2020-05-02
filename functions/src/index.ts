@@ -16,8 +16,8 @@
 
 import * as functions from "firebase-functions"
 import { Firestore } from "@google-cloud/firestore"
-import { apiRoute } from "./apiRoute"
-import { apiRoutePoint } from "./apiRoutePoint"
+import { apiRoute } from "./controller/apiRoute"
+import { apiRoutePoint } from "./controller/apiRoutePoint"
 
 const PROJECT_ID = "rutas-257409"
 
