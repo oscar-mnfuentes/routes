@@ -15,13 +15,7 @@
  */
 
 import * as functions from "firebase-functions"
-import {
-  Firestore,
-  DocumentReference,
-  WriteResult,
-  QuerySnapshot,
-  DocumentSnapshot
-} from "@google-cloud/firestore"
+import { Firestore } from "@google-cloud/firestore"
 import { apiRoute } from "./apiRoute"
 import { apiRoutePoint } from "./apiRoutePoint"
 
@@ -37,13 +31,9 @@ const PROJECT_ID = "rutas-257409"
 
 export const firestore = new Firestore({
   projectId: PROJECT_ID,
-  timestampsInSnapshots: true
+  timestampsInSnapshots: true,
 })
 
-export const routeFunction = functions
-  .region("europe-west1")
-  .https.onRequest(apiRoute)
+export const routeFunction = functions.region("europe-west1").https.onRequest(apiRoute)
 
-export const routePointFunction = functions
-  .region("europe-west1")
-  .https.onRequest(apiRoutePoint)
+export const routePointFunction = functions.region("europe-west1").https.onRequest(apiRoutePoint)
