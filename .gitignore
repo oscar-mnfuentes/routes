@@ -60,5 +60,6 @@ typings/
 # dotenv environment variables file
 .env
 
-rutas-257409-6536514ece35.json
 
+
+functions/src/index.ts
