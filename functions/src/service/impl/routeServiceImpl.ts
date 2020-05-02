@@ -16,14 +16,14 @@ export class RouteServiceImpl implements RouteService {
       return <Route>{
         id: routeDoc.id,
         name: routeDoc.data().name,
-        description: routeDoc.data().description,
+        description: routeDoc.data().description
       }
     })
   }
 
   async getRoute(idRoute: string): Promise<Route> {
     const routeSnapshot = await this.routeRepository.getRoute(idRoute)
-    const route : Route = {
+    const route: Route = {
       id: routeSnapshot.id,
       name: routeSnapshot.data().name,
       description: routeSnapshot.data().description

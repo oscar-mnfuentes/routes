@@ -1,8 +1,5 @@
 import * as express from "express"
 import * as cors from "cors"
-import { DocumentReference } from "@google-cloud/firestore"
-import { firestore } from ".."
-import { DocumentSnapshot } from "firebase-functions/lib/providers/firestore"
 import { Route } from "../interfaces/Route"
 import { RouteServiceImpl } from "../service/impl/routeServiceImpl"
 
