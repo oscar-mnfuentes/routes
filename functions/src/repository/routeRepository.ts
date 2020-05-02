@@ -1,13 +1,14 @@
-import { Route } from "../apiRoute"
+import { QuerySnapshot, DocumentReference, DocumentSnapshot, WriteResult } from "@google-cloud/firestore"
+import { Route } from "../interfaces/Route"
 
 export interface RouteRepository {
-  getRoutes()
+  getRoutes(): Promise<QuerySnapshot>
 
-  getRoute(idRoute: string)
+  getRoute(idRoute: string): Promise<DocumentSnapshot>
 
-  saveNewRoute(route: Route)
+  saveNewRoute(route: Route): Promise<DocumentReference>
 
-  updateRoute(route: Route)
+  updateRoute(route: Route): Promise<WriteResult>
 
-  deleteRoute(idRoute: string)
+  deleteRoute(idRoute: string): Promise<WriteResult>
 }
